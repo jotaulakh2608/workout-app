@@ -4,7 +4,6 @@ import { useLogout } from '../hooks/useLogout'
 
 const Navbar = () => {
   const {logout}= useLogout()
-  const data = useSelector((state)=>state.user)
   const local = JSON.parse(localStorage.getItem('user'))
   const handleClick =()=>{
     logout()
