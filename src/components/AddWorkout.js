@@ -14,7 +14,6 @@ export const AddWorkout = ({edit, setedit}) => {
     const dispatch = useDispatch()
   const handleOpen = () => dispatch(Open())
   const handleClose = () => dispatch(Close())
-console.log(open);
 const style = {
   position: 'absolute',
   top: '50%',

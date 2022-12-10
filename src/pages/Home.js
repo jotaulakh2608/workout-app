@@ -13,10 +13,12 @@ const Home = () => {
   const dispatch = useDispatch();
   const workouts = useSelector((state) => state.workout.workouts);
   const { User } = useData();
+  const [loading, setloading] = useState(false);
   const [edit, setedit] = useState(false);
   const port = 'https://workoutapp.up.railway.app'
   useEffect(() => {
     const fetchWorkouts = async () => {
+      setloading(true)
       const response = await fetch(`${port}/api/workouts`, {
         headers: {
           Authorization: `Bearer ${User.token}`,
@@ -26,6 +28,7 @@ const Home = () => {
 
       if (response.ok) {
         dispatch(SetWorkout(json));
+       setloading(false)
       }
     };
     if (User) {
@@ -37,7 +40,8 @@ const Home = () => {
     <div className="home">
       <div className="workouts ">
         {workouts?.length===0&& <div className="" style={{height:'100%', display:'flex', alignItems:'center', justifyContent:'center', width:'100%'}}>
-   <SpinnerCircularFixed enabled={workouts?.length===0} size={60} />
+          {loading?<SpinnerCircularFixed enabled={loading} size={60} />: <h5>No Workouts, Tap below to add workouts</h5> }
+   
 
    </div>}
   
