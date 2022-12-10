@@ -1,3 +1,3 @@
 import axios from "axios"
 
-const port = 'https://workoutapp.up.railway.app'
+const port = 'http://localhost:10000'

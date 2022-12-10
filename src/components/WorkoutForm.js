@@ -14,7 +14,7 @@ const WorkoutForm = ({handleClose}) => {
   const [reps, setReps] = useState('')
   const [error, setError] = useState(null)
   const [emptyFields, setEmptyFields] = useState([])
-  const port = 'https://workoutapp.up.railway.app'
+  const port = 'http://localhost:10000'
 
   const handleSubmit = async (e) => {
     e.preventDefault()

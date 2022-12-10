@@ -10,7 +10,7 @@ import { DeleteWorkout, Open } from "../Slices/WorkoutSlice";
 const WorkoutDetails = ({ workout, setEdit }) => {
   const dispatch = useDispatch()
   const { User } = useData();
-  const port = 'https://workoutapp.up.railway.app'
+  const port = 'http://localhost:10000'
   const handleClick = async () => {
     if(!User){
       return

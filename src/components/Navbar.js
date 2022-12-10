@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 import { useLogout } from '../hooks/useLogout'
 
 const Navbar = () => {
@@ -9,9 +10,15 @@ const Navbar = () => {
     logout()
   }
 
+
+  const style={
+    
+  }
+console.log(window.innerWidth);
   return (
     <header>
       <div className="container">
+      < ToastContainer className='toast'  position={'top-center'} autoClose={1000}/>
         <Link to="/">
           <h1>Workout Buddy</h1>
         </Link>

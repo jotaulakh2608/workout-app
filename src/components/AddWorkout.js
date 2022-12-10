@@ -7,7 +7,7 @@ import EditWorkoutForm from "../components/EditWorkoutForm";
 import WorkoutForm from './WorkoutForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { Close, Open } from '../Slices/WorkoutSlice';
-
+import {BiDumbbell} from 'react-icons/bi'
 
 export const AddWorkout = ({edit, setedit}) => {
     const open = useSelector((state)=>state.workout.open)
@@ -26,8 +26,14 @@ const style = {
   p: 4,
 };
   return (
-    <div> <h4 style={{color:'#1aac83', fontSize:'20px', cursor:'pointer'}} onClick={handleOpen}>
-Add Workout   </h4>
+    <div> <h4 style={{color:'#1aac83', fontSize:'20px', cursor:'pointer', display:'flex',}} onClick={handleOpen}>
+      <span>
+      Add Workout
+      </span>
+      <div style={{marginLeft:'5px', fontSize:'25px'}}>
+        <BiDumbbell/>
+      </div>
+    </h4>
     <Modal
       aria-labelledby="transition-modal-title"
       aria-describedby="transition-modal-description"

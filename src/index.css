@@ -116,6 +116,10 @@ form.signup, form.login {
   border-radius: 4px;
 }
 
+.toast{
+  width: 500px !important;
+}
+
 @media (max-width:500px) {
   .box{
     width: 80% !important;
@@ -126,5 +130,11 @@ form.signup, form.login {
   }
   h4{
     font-size: 0.8rem;
+  }
+  h3{
+    font-size: 0.9rem;
+  }
+  .toast{
+    width: 200px !important;
   }
 }
