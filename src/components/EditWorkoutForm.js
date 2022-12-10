@@ -13,10 +13,11 @@ const EditWorkoutForm = ({ setEdit, Edit }) => {
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
   const dispatch = useDispatch();
+  const port = 'https://workoutapp.up.railway.app'
   useEffect(() => {
     const getWorkout = async () => {
       const { data } = await axios({
-        url: `/api/workouts/${id}`,
+        url: `${port}/api/workouts/${id}`,
         headers: {
           Authorization: `Bearer ${User.token}`,
         },

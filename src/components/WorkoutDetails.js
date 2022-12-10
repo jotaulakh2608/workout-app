@@ -10,11 +10,12 @@ import { DeleteWorkout } from "../Slices/WorkoutSlice";
 const WorkoutDetails = ({ workout, setEdit }) => {
   const dispatch = useDispatch()
   const { User } = useData();
+  const port = 'https://workoutapp.up.railway.app'
   const handleClick = async () => {
     if(!User){
       return
     }
-    const response = await fetch("/api/workouts/" + workout._id, {
+    const response = await fetch(`${port}/api/workouts/` + workout._id, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${User.token}`,

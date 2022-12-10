@@ -12,6 +12,7 @@ const WorkoutForm = () => {
   const [reps, setReps] = useState('')
   const [error, setError] = useState(null)
   const [emptyFields, setEmptyFields] = useState([])
+  const port = 'https://workoutapp.up.railway.app'
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -23,7 +24,7 @@ const WorkoutForm = () => {
 
     const workout = {title, load, reps}
 
-    const response = await fetch('/api/workouts', {
+    const response = await fetch(`${port}/api/workouts`, {
       method: 'POST',
       body: JSON.stringify(workout),
       headers: {
