@@ -8,7 +8,7 @@ export const useLogout = () => {
   const navigate= useNavigate()
     const dispatch = useDispatch()
     const logout=()=>{
-     
+     navigate('/login')
       
         toast.success('Logged Out successfully')
  
