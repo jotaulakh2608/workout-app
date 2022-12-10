@@ -35,8 +35,6 @@ header a {
 /* homepage */
 .home {
   display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 100px;
 }
 .workout-details {
   background: #fff;
@@ -118,3 +116,15 @@ form.signup, form.login {
   border-radius: 4px;
 }
 
+@media (max-width:500px) {
+  .box{
+    width: 80% !important;
+    outline: none;
+  }
+  h1{
+    font-size: 1rem;
+  }
+  h4{
+    font-size: 0.8rem;
+  }
+}

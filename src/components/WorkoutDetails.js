@@ -5,7 +5,7 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { useData } from "../hooks/useData";
 import { idChange } from "../Slices/UserSlice";
 import { useDispatch } from "react-redux";
-import { DeleteWorkout } from "../Slices/WorkoutSlice";
+import { DeleteWorkout, Open } from "../Slices/WorkoutSlice";
 
 const WorkoutDetails = ({ workout, setEdit }) => {
   const dispatch = useDispatch()
@@ -43,7 +43,7 @@ const WorkoutDetails = ({ workout, setEdit }) => {
         {formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}
       </p>
       <div className="" style={{display:'flex'}}>
-      <span className="material-symbols-outlined" style={{right:'60px'}} onClick={()=>{setEdit(true);dispatch(idChange(workout._id))}}>
+      <span className="material-symbols-outlined" style={{right:'60px'}} onClick={()=>{setEdit(true);dispatch(idChange(workout._id));dispatch(Open())}}>
         edit
       </span>
       <span className="material-symbols-outlined" onClick={handleClick}>

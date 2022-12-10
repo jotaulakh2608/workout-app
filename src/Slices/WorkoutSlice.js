@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   workouts: [],
+  open:false
 };
 
 const WorkoutSlice = createSlice({
@@ -26,11 +27,17 @@ if(user){
     user.load= action.payload.load
     user.reps= action.payload.reps
 }
+    },
+    Open(state, action){
+      state.open=true
+    },
+    Close(state){
+      state.open=false
     }
   }
 });
 
-export const { CreateWorkout, SetWorkout, DeleteWorkout, UpdateWorkout, ClearWorkouts } =
+export const { CreateWorkout, SetWorkout, DeleteWorkout, UpdateWorkout, ClearWorkouts, Open, Close} =
   WorkoutSlice.actions;
 
 export default WorkoutSlice.reducer;

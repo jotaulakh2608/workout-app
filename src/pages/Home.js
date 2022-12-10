@@ -2,19 +2,18 @@ import { useEffect, useState } from "react";
 
 // components
 import WorkoutDetails from "../components/WorkoutDetails";
-import WorkoutForm from "../components/WorkoutForm";
 import { useData } from "../hooks/useData";
-import EditWorkoutForm from "../components/EditWorkoutForm";
 import { useDispatch, useSelector } from "react-redux";
 import { SetWorkout } from "../Slices/WorkoutSlice";
 import { SpinnerCircularFixed } from 'spinners-react';
+import { AddWorkout } from "../components/AddWorkout";
 
 
 const Home = () => {
   const dispatch = useDispatch();
   const workouts = useSelector((state) => state.workout.workouts);
   const { User } = useData();
-  const [Edit, setEdit] = useState(false);
+  const [edit, setedit] = useState(false);
   const port = 'https://workoutapp.up.railway.app'
   useEffect(() => {
     const fetchWorkouts = async () => {
@@ -47,16 +46,17 @@ const Home = () => {
           workouts.map((workout) => (
             <WorkoutDetails
               key={workout._id}
-              setEdit={setEdit}
+              setEdit={setedit}
               workout={workout}
             />
           ))}
+          <div style={{width:'100%', display:'flex', justifyContent:'center'}}>
+        <AddWorkout edit={edit} setedit={setedit} />
+
+          </div>
+   
       </div>
-      {Edit ? (
-        <EditWorkoutForm Edit={Edit} setEdit={setEdit} />
-      ) : (
-        <WorkoutForm />
-      )}
+     
     </div>
   );
 };

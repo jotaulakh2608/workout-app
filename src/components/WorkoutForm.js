@@ -1,11 +1,13 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import { useDispatch } from "react-redux"
 import { useData } from "../hooks/useData"
 import { CreateWorkout } from "../Slices/WorkoutSlice"
 
-const WorkoutForm = () => {
+
+const WorkoutForm = ({handleClose}) => {
   const dispatch = useDispatch()
   const {User}= useData()
+  
 
   const [title, setTitle] = useState('')
   const [load, setLoad] = useState('')
@@ -44,6 +46,7 @@ const WorkoutForm = () => {
       setReps('')
       setError(null)
       setEmptyFields([])
+      handleClose()
       console.log('new workout added', json)
       dispatch(CreateWorkout(json))
     }
@@ -84,3 +87,7 @@ const WorkoutForm = () => {
 }
 
 export default WorkoutForm
+
+
+
+

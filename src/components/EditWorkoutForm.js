@@ -2,9 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useData } from "../hooks/useData";
-import { SetWorkout, UpdateWorkout } from "../Slices/WorkoutSlice";
+import { Close, SetWorkout, UpdateWorkout } from "../Slices/WorkoutSlice";
 
-const EditWorkoutForm = ({ setEdit, Edit }) => {
+const EditWorkoutForm = ({ setEdit, Edit, handleClose }) => {
   const { User } = useData();
   const id = useSelector((state) => state.user.id);
   const [title, setTitle] = useState("");
@@ -13,7 +13,7 @@ const EditWorkoutForm = ({ setEdit, Edit }) => {
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
   const dispatch = useDispatch();
-  const port = 'https://workoutapp.up.railway.app'
+  const port = "https://workoutapp.up.railway.app";
   useEffect(() => {
     const getWorkout = async () => {
       const { data } = await axios({
@@ -31,27 +31,23 @@ const EditWorkoutForm = ({ setEdit, Edit }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!User) {
-      setError("You must be logged in ");
-      return;
-    }
-    setEdit(false)
+    dispatch(Close());
+    setEdit(false);
     const workout = { title, load, reps };
 
- await axios.patch(`/api/workouts/${id}`, workout, {
+    await axios.patch(`${port}/api/workouts/${id}`, workout, {
       headers: {
-        "Authorization": `Bearer ${User.token}`,
+        Authorization: `Bearer ${User.token}`,
       },
-    })
+    });
 
-    const data = await axios.get('/api/workouts', {headers: {
-        "Authorization": `Bearer ${User.token}`,
-      }},)
-   
-   
-      dispatch(SetWorkout(data.data))
-   
+    const data = await axios.get(`${port}/api/workouts`, {
+      headers: {
+        Authorization: `Bearer ${User.token}`,
+      },
+    });
+    
+    dispatch(SetWorkout(data.data));
   };
 
   return (
