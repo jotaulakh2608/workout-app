@@ -15,7 +15,7 @@ const Home = () => {
   const { User } = useData();
   const [loading, setloading] = useState(false);
   const [edit, setedit] = useState(false);
-  const port = "http://localhost:10000";
+  const port = 'https://workoutapp.up.railway.app';
   useEffect(() => {
     const fetchWorkouts = async () => {
       setloading(true);

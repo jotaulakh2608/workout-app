@@ -8,7 +8,7 @@ export const useSignup = () => {
     const [error, seterror] = useState(null);
     const [loading, setloading] = useState(false);
     const dispatch  = useDispatch()
-    const port = 'http://localhost:10000'
+    const port = 'https://workoutapp.up.railway.app'
     
     const signup= async (email, password)=>{
         const deta= {email, password}

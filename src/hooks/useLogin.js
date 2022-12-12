@@ -10,7 +10,7 @@ export const useLogin = () => {
   const [loading, setloading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const port = "http://localhost:10000";
+  const port = 'https://workoutapp.up.railway.app';
 
   const logIn = async (email, password) => {
     const deta = { email, password }
